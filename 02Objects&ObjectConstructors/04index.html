@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise</title>
+</head>
+<body>
+    <script>
+        function Book(title, autor, pages, read){
+
+            if(!new.target){
+                throw Error("You must use the 'new' operator to call the constructor");
+            }
+            this.title = title;
+            this.autor = autor;
+            this.pages = pages;
+            this.read = read;
+            this.info = function(){
+                return this.title  +" by "+ this.autor +", "+ this.pages +", "+ this.read +".";
+            }
+        };
+
+        const theHobbit = new Book("The Hobbit", "J.R.R. Tolkien", "295 pages", "not read yet");
+
+        console.log(theHobbit.info());
+    </script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Objects as a design pattern</title>
+</head>
+<body>
+    <script>
+        //example one
+        const playerOneName = 'tim';
+        const playerTwoName = 'jenn';
+        const playerOneMarker = 'X';
+        const playerTwoMarker = 'O';
+
+        //example two
+        const playerOne = {
+            name: 'tim',
+            marker: 'X'
+        };
+
+        const playerTwo = {
+            name: 'jenn',
+            marker: 'O'
+        };
+
+        // what you can do with example two
+        function printName(player){
+            console.log(player.name);
+        }
+        
+        printName(playerOne);
+
+        // more benifits
+        function gameOver(winningPlayer){
+            console.log("Congratulations!");
+            console.log(winningPlayer.name + " is the winner!");
+        }
+
+        gameOver(playerTwo);
+    </script>
+</body>
+</html>
