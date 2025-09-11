@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Another Example</title>
+</head>
+<body>
+    <script>
+        function Person(name){
+            this.name = name;
+        }
+
+        Person.prototype.sayName = function(){
+            console.log(`Hello, I'm ${this.name}!`);
+        }
+
+        function Player(name, marker){
+            this.name = name;
+            this.marker = marker;
+        }
+
+        // Don't do this!
+        // Use Object.setPrototypeOf(Player.prototype, Person.prototype);
+        Player.prototype = Person.prototype;
+
+        function Enemy(name){
+            this.name = name;
+            this.marker = '^';
+        }
+
+        //Not again!
+        // Use Object.setPrototypeOf(Enemy.prototype, Person.prototy);
+        Enemy.prototype = Person.prototype;
+
+        Enemy.prototype.sayName = function(){
+            console.log('HAHAHAHAHAHA'); // This logs "HAHAHAHAHA" because we edited the sayName function!
+        };
+
+        const carl = new Player('carl', 'X');
+        carl.sayName();
+    </script>
+</body>
+</html>
