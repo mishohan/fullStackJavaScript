@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Handled by setter function</title>
+</head>
+<body>
+    <script>
+        let user = {
+            name: "John",
+            surName: "Smith",
+
+            set fullName(value){
+                [this.name, this.surName] = value.split(" ")
+            },
+
+            get fullName() {
+                return `${this.name} ${this.surName}`;
+            }
+        };
+
+        let admin = {
+            __proto__: user,
+            isAdmin: true
+        };
+        
+        console.log(admin.fullName); // John Smith (*)
+
+        // setter triggers!
+        admin.fullName = "Alice Cooper"; // (**)
+        
+        console.log(admin.fullName); // Alice Cooper, state of admin modified
+        console.log(user.fullName); // John Smith, state of user protected
+    </script>
+</body>
+</html>
