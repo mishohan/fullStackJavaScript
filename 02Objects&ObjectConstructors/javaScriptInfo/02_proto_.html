@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Another Example: __proto__</title>
+</head>
+<body>
+    <script>
+        let animal = {
+            eats: true,
+            walk() {
+                console.log("Animal walk");
+            }
+        };
+
+        let rabbit = {
+            jumps: true,
+            __proto__: animal
+        };
+
+        // walk is taken from the prototype
+        rabbit.walk(); // Animal walk
+
+        // prototype chain can be longer
+        let longEar = {
+            earLength: 10,
+            __proto__: rabbit
+        };
+
+        // walk is taken from the prototype chain
+        longEar.walk(); // Animal walk
+        console.log(longEar.jumps); // true (from rabbit)
+    </script>
+</body>
+</html>
